@@ -1,5 +1,9 @@
 # Final Project Server – Campus Management System (PERN)
 
+## Related Repository
+Server-side application:
+https://github.com/shoaibsiddiqui1/final_project_server
+
 ## Overview
 This repository contains the **server-side (back-end)** of the Campus Management System built for the Full-Stack CRUD Application final project.  
 It uses **Node.js, Express, PostgreSQL, and Sequelize** to provide a RESTful API for managing campuses and students.
