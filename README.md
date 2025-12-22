@@ -1,135 +1,163 @@
-## Local Setup (Required)
+Final Project – Campus Management System (PERN Stack)
 
-1) Create a Postgres database named `final_project`
+Student: Shoaib Siddiqui
+Course: Full-Stack CRUD Application
+Project: Campus Management System
 
-2) Create a `.env` file in the root of this repo (copy from `.env.example`)
-   - PG_USER=postgres
-   - PG_PASSWORD=your_postgres_password
+This project consists of two separate repositories that must be run together:
 
-3) Install:
-npm install
+Server (Backend) – Node.js, Express, Sequelize, PostgreSQL
 
-4) Seed:
-node seed.js
+Client (Frontend) – React, Redux
 
-5) Start server:
-npm start
+The client communicates with the server through REST API calls.
 
-# Final Project Server – Campus Management System (PERN)
+Repository Links
+
+Server (Backend):
+https://github.com/shoaibsiddiqui1/final_project_server
+
+Client (Frontend):
+https://github.com/shoaibsiddiqui1/client-starter-code
+
+Requirements (Before You Start)
+
+Node.js (v18 or v20 recommended)
+
+PostgreSQL installed and running locally
+
+Two terminal windows (one for server, one for client)
+
+HOW TO RUN THE APPLICATION (STEP-BY-STEP)
+PART 1 — Run the Server (Backend)
+1. Clone the server repository
+git clone https://github.com/shoaibsiddiqui1/final_project_server
+cd final_project_server
+
+2. Create the PostgreSQL database
+
+Create a database named:
+
+final_project
 
 
-## Overview
-This repository contains the **server-side (back-end)** of the Campus Management System built for the Full-Stack CRUD Application final project.  
-It uses **Node.js, Express, PostgreSQL, and Sequelize** to provide a RESTful API for managing campuses and students.
+Example command:
 
-This server works together with the client-side React/Redux application.
-
----
-
-## Technology Stack
-- Node.js
-- Express.js
-- PostgreSQL
-- Sequelize ORM
-
----
-
-## Database Models
-
-### Campus
-- name (STRING, required)
-- address (STRING, required)
-- description (TEXT, optional)
-- imageUrl (STRING, optional, default provided)
-
-### Student
-- firstName (STRING, required)
-- lastName (STRING, required)
-- email (STRING, required)
-- imageUrl (STRING, optional, default provided)
-- gpa (FLOAT, 0.0–4.0, optional)
-
-### Associations
-- A Campus **has many** Students
-- A Student **belongs to** at most one Campus
-
----
-
-## API Routes
-
-### Campuses
-- `GET /api/campuses` – get all campuses
-- `GET /api/campuses/:id` – get a single campus (with students)
-- `POST /api/campuses` – create a new campus
-- `PUT /api/campuses/:id` – edit a campus
-- `DELETE /api/campuses/:id` – delete a campus (students are unassigned)
-
-### Students
-- `GET /api/students` – get all students
-- `GET /api/students/:id` – get a single student (with campus)
-- `POST /api/students` – create a new student
-- `PUT /api/students/:id` – edit a student
-- `DELETE /api/students/:id` – delete a student
-
----
-
-## Setup Instructions
-
-### 1. Create the Database
-Make sure PostgreSQL is running, then create the database:
-```bash
 createdb final_project
 
-2. Install Dependencies
+3. Create environment variables
+
+Copy the example file:
+
+cp .env.example .env
+
+
+Open .env and set your PostgreSQL credentials:
+
+PG_USER=postgres
+PG_PASSWORD=your_postgres_password
+
+4. Install server dependencies
 npm install
 
-3. Seed the Database
+5. Seed the database
 node seed.js
 
-4. Start the Server
+
+Expected output:
+
+Database synced!
+Seeding successful!
+
+6. Start the server
 node index.js
 
 
-The server will run at:
+Expected output:
 
+Server running on port 3001
+
+
+✅ The backend API is now running at:
 http://localhost:3001
 
-Notes
+⚠️ Leave this terminal running
 
-This server is designed to be used with the client-side React/Redux application.
+PART 2 — Run the Client (Frontend)
+1. Open a NEW terminal window
+2. Clone the client repository
+git clone https://github.com/shoaibsiddiqui1/client-starter-code
+cd client-starter-code
 
-All CRUD operations are fully implemented.
+3. Install client dependencies
+npm install
 
-Sequelize manages database relationships and queries.
-
-Author
-
-Shoaib Siddiqui
-
-Full-Stack CRUD Application — Final Project
+4. Start the client
+npm start
 
 
----
+The application will automatically open in the browser at:
 
-# PART B — **Push `final_project_server` to GitHub**
+👉 http://localhost:3000
 
-### 1️⃣ Create a NEW GitHub repo
-On GitHub:
-- Repo name: **final_project_server**
-- Public
-- **DO NOT** initialize with README
+IMPORTANT NOTES
 
----
+The server must be running first before starting the client.
 
-### 2️⃣ Push from terminal
+The client fetches data from the server at http://localhost:3001.
 
-```bash
-cd ~/final_project/final_project_server
+.env files are not committed to GitHub and must be created locally.
 
-git init
-git add .
-git commit -m "Initial server commit"
+ESLint warnings do not affect functionality.
 
-git branch -M main
-git remote add origin https://github.com/shoaibsiddiqui1/final_project_server.git
-git push -u origin main
+If the Client Shows an “allowedHosts” Error
+
+On some machines, React may fail to start with an error like:
+
+options.allowedHosts[0] should be a non-empty string
+
+Fix:
+
+Create a file named .env in the client repository root and add:
+
+HOST=localhost
+DANGEROUSLY_DISABLE_HOST_CHECK=true
+
+
+Then restart:
+
+npm start
+
+
+(Do not commit this .env file.)
+
+Features Implemented
+
+Full CRUD operations for Campuses and Students
+
+PostgreSQL database with Sequelize ORM
+
+One-to-many relationship between Campus and Student
+
+RESTful API
+
+React client with navigation between views
+
+All assignment requirements implemented
+
+Summary (Quick Run)
+
+Terminal 1 (Server):
+
+cd final_project_server
+npm install
+cp .env.example .env
+node seed.js
+node index.js
+
+
+Terminal 2 (Client):
+
+cd client-starter-code
+npm install
+npm start
