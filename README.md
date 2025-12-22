@@ -1,3 +1,20 @@
+## Local Setup (Required)
+
+1) Create a Postgres database named `final_project`
+
+2) Create a `.env` file in the root of this repo (copy from `.env.example`)
+   - PG_USER=postgres
+   - PG_PASSWORD=your_postgres_password
+
+3) Install:
+npm install
+
+4) Seed:
+node seed.js
+
+5) Start server:
+npm start
+
 # Final Project Server – Campus Management System (PERN)
 
 
