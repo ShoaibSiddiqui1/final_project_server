@@ -1,4 +1,5 @@
 // final_project_server/seed.js
+require('dotenv').config();
 const { db, Campus, Student } = require("./db");
 
 const seed = async () => {
